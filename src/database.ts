@@ -5,6 +5,7 @@ import config from "./config/config";
 // * and give a "real" type to our dbOptions
 
 const dbOptions: ConnectionOptions = {
+  useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
