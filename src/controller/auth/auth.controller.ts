@@ -1,8 +1,19 @@
 import { Request, Response } from "express";
+import jwt from "jsonwebtoken";
+import config from "./../../config/config";
 
 import User, { IUser } from "./../../models/user";
 
-// * signUp
+// * create JWT
+function createToken(user: IUser) {
+  // * generate token
+  // * jwt.sign( object, jwtSecret, { expiresIn } );
+  return jwt.sign({ id: user.id, email: user.email }, config.jwtSecret, {
+    expiresIn: 86400,
+  });
+}
+
+// * sign Up
 export const signUp = async (
   req: Request,
   res: Response
@@ -24,6 +35,27 @@ export const signUp = async (
   return res.send({ status: "ok", user: newUser });
 };
 
-export const signIn = (req: Request, res: Response) => {
-  res.send("sign in");
+// * sing in
+export const signIn = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  // res.send("sign in");
+  if (!req.body.email || !req.body.password) {
+    res.status(400).json({ message: "Email or password is required" });
+  }
+
+  const user = await User.findOne({ email: req.body.email });
+
+  if (!user) {
+    return res.status(400).json({ message: "This user doesn't exist" });
+  }
+
+  const match = await user.comparePassword(req.body.password);
+
+  if (match) {
+    return res.status(200).json({ token: createToken(user) });
+  }
+
+  return res.status(400).json({ message: "Email or password is incorrect" });
 };
