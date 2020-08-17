@@ -76,7 +76,7 @@ After that create the `app.ts`, `database.ts`, and `index.ts` files
 },
 ```
 
-## Setting up config files and database
+## Setting up config files
 
 First create a file in the config folder
 

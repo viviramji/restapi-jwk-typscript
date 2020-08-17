@@ -3,12 +3,11 @@
  */
 
 import app from "./app";
-
-//app.listen(app.get("port"));
+import "./database";
 
 async function main() {
   await app.listen(app.get("port"), () => {
-    console.log("Service on port " + app.get("port"));
+    console.log("API Running on " + app.get("port"));
   });
 }
 
