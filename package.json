@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/viviramji/restapi-jwt-typscript.git"
+    "url": "git+https://github.com/viviramji/restapi-jwt-typescript.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/viviramji/restapi-jwt-typscript/issues"
+    "url": "https://github.com/viviramji/restapi-jwt-typescript/issues"
   },
-  "homepage": "https://github.com/viviramji/restapi-jwt-typscript.git#readme",
+  "homepage": "https://github.com/viviramji/restapi-jwt-typescript.git#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
